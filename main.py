@@ -41,5 +41,18 @@ def text_box(page: ft.Page):
     page.add(txt_name, ft.ElevatedButton("Say hello!", on_click=btn_click))
 
 
+def check_box(page: ft.Page):
+    def checkbox_changed(e):
+        output_text.value = f"You have learned how to ski : {todo_check.value}."
+        page.update()
+
+    output_text = ft.Text()
+    todo_check = ft.Checkbox(
+        label="ToDo: Learn how to use ski", value=False, on_change=checkbox_changed
+    )
+    page.add(todo_check, output_text)
+
+
 # ft.app(target=counter_app)
-ft.app(target=text_box)
+# ft.app(target=text_box)
+ft.app(target=check_box)
